@@ -12,8 +12,31 @@
 var _ = require('lodash');
 
 
+
 // Get list of things
 exports.index = function (req, res) {
+
+    var moment = require('moment');
+
+    var startDate = req.param('startDate');
+    var endDate = req.param('endDate');
+
+    console.log(startDate);
+    console.log(endDate);
+
+    var m_startDate = moment(Number(startDate)).startOf('day');
+    var m_endDate = moment(Number(endDate)).startOf('day');
+
+    var druid_start_date = m_startDate.format("YYYY-MM-DDTHH:00:00Z");
+    var druid_end_date = m_endDate.format("YYYY-MM-DDTHH:00:00Z");
+
+    console.log(druid_start_date + " : " + druid_end_date);
+
+
+    /*
+     $filter('date')(date, format, timezone)
+     */
+
 
 
     var druidRequesterFactory = require('facetjs-druid-requester').druidRequesterFactory;
@@ -47,8 +70,8 @@ exports.index = function (req, res) {
         // Define the dataset in context with a filter on time and language
         .def("marketing",
         $('marketing').filter($("t").in({
-            start: new Date("2015-04-01T00:00:00Z"),
-            end: new Date("2015-04-01T01:00:00Z")
+            start: new Date(druid_start_date),
+            end: new Date(druid_end_date)
         }).and($('channel').is('onsite')))
     )
         .apply('ByHour',
@@ -73,7 +96,7 @@ exports.index = function (req, res) {
     ex.compute(context).then(function(data) {
         // Log the data while converting it to a readable standard
         res.json(data.toJS());
-        console.log(JSON.stringify(data.toJS(), null, 2));
+       // console.log(JSON.stringify(data.toJS(), null, 2));
     }).done();
 
 

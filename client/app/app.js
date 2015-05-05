@@ -6,7 +6,8 @@ angular.module('heliosApp', [
     'ngSanitize',
     'ngRoute',
     'ui.bootstrap',
-    'smart-table'
+    'smart-table',
+    'daterangepicker'
 ])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
