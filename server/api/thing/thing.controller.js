@@ -33,12 +33,6 @@ exports.index = function (req, res) {
     console.log(druid_start_date + " : " + druid_end_date);
 
 
-    /*
-     $filter('date')(date, format, timezone)
-     */
-
-
-
     var druidRequesterFactory = require('facetjs-druid-requester').druidRequesterFactory;
     var facet = require('facetjs');
     //var chronology = require('chronology');
@@ -74,9 +68,9 @@ exports.index = function (req, res) {
             end: new Date(druid_end_date)
         }).and($('channel').is('onsite')))
     )
-        .apply('ByHour',
-        $('marketing').split($("t").timeBucket('PT1H', 'Etc/UTC'), 'TimeByHour')
-            .sort('$TimeByHour', 'ascending')
+        .apply('ByDay',
+        $('marketing').split($("t").timeBucket('P1D', 'Etc/UTC'), 'TimeByDay')
+            .sort('$TimeByDay', 'ascending')
             .apply('Ercc',
             $('marketing').split('$ercc', 'Ercc')
                 .apply('Impressions', '$marketing.sum($im)')

@@ -12,6 +12,8 @@
         <input date-range-picker id="daterange1" class="form-control date-picker" type="text"
                name="date" ng-model="date" required/>
 
+
+
         <table st-table="rowCollectionDisplay" st-safe-src="data" class="table table-stripedinpble-bordered" style="width:90%;margin-left:10px;margin-top:10px">
             <thead>
             <tr>
@@ -30,9 +32,9 @@
                 <td>{{row.Ercc | uppercase}}</td>
                 <td>{{row.Impressions}}</td>
             </tr>-->
-
+            <!--America/Los_Angeles-->
             <tr ng-repeat-start="row in rowCollectionDisplay">
-                <td colspan="3" ng-click="row.collapseRows = !row.collapseRows" class="collapsible-row"> {{row.TimeByHour.start | date:'yyyy-MM-dd HH:00:00': 'America/Los_Angeles'}}
+                <td colspan="3" ng-click="row.collapseRows = !row.collapseRows" class="collapsible-row"> {{row.TimeByDay.start | date:'yyyy-MM-dd': 'UTC'}}
                     <span ng-class="{'caret':!row.collapseRows, 'right-caret':row.collapseRows}"></span>
                 </td>
             </tr>
