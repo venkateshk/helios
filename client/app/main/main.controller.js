@@ -12,6 +12,8 @@ angular.module('heliosApp', [
         });
         $scope.rowCollectionDisplay = [].concat($scope.awesomeThings);
 
+        $scope.itemsByPage = 15;
+
         //Watch for date changes
         $scope.$watch('date', function(newDate) {
             console.log('New date set: ', newDate);
