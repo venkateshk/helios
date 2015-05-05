@@ -59,13 +59,13 @@ exports.index = function (req, res) {
                 .apply('Impressions', '$marketing.sum($im)')
                 .apply('Clicks', '$marketing.sum($cl)')
                 .sort('$Impressions', 'descending')
-                .limit(6)
+                .limit(20)
                 .apply('Mpid',
                 $('marketing').split('$mpid', 'Mpid')
                     .apply('Impressions', '$marketing.sum($im)')
                     .apply('Clicks', '$marketing.sum($cl)')
                     .sort('$Impressions', 'descending')
-                    .limit(3)
+                    //.limit(10)
             )
         )
     );
