@@ -1,17 +1,18 @@
 'use strict';
 
 angular.module('heliosApp', [
-  'ngCookies',
-  'ngResource',
-  'ngSanitize',
-  'ngRoute',
-  'ui.bootstrap'
+    'ngCookies',
+    'ngResource',
+    'ngSanitize',
+    'ngRoute',
+    'ui.bootstrap',
+    'smart-table'
 ])
-  .config(function ($routeProvider, $locationProvider) {
-    $routeProvider
-      .otherwise({
-        redirectTo: '/'
-      });
+    .config(function ($routeProvider, $locationProvider) {
+        $routeProvider
+            .otherwise({
+                redirectTo: '/'
+            });
 
-    $locationProvider.html5Mode(true);
-  });
+        $locationProvider.html5Mode(true);
+    });
