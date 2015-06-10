@@ -12,6 +12,11 @@
         <input date-range-picker id="daterange1" class="form-control date-picker" type="text"
                name="date" ng-model="date" required/>
 
+        <br/>
+
+        <div ng-dropdown-multiselect="" options="dimData" selected-model="dimModel" extra-settings="dimSettings"></div>
+
+        <br/>
 
 
         <table st-table="rowCollectionDisplay" st-safe-src="data" class="table table-stripedinpble-bordered" style="width:90%;margin-left:10px;margin-top:10px">
@@ -21,11 +26,11 @@
                 <th st-sort="Impressions">Impressions</th>
                 <th st-sort="Clicks">Clicks</th>
             </tr>
-            <tr>
+            <!--<tr>
                 <th colspan="3">
                     <input st-search="" placeholder="global search" class="input-sm form-control" type="search" />
                 </th>
-            </tr>
+            </tr>-->
             </thead>
 
             <!--<tr ng-repeat="row in rowCollectionDisplay">
@@ -34,7 +39,7 @@
             </tr>-->
             <!--America/Los_Angeles-->
             <tr ng-repeat-start="row in rowCollectionDisplay">
-                <td colspan="3" ng-click="row.collapseRows = !row.collapseRows" class="collapsible-row"> {{row.TimeByDay.start | date:'yyyy-MM-dd': 'UTC'}}
+                <td colspan="3" ng-click="row.collapseRows = !row.collapseRows" class="collapsible-row" bgcolor="#BEBEBE"> {{row.TimeByDay.start | date:'yyyy-MM-dd': 'UTC'}}
                     <span ng-class="{'caret':!row.collapseRows, 'right-caret':row.collapseRows}"></span>
                 </td>
             </tr>

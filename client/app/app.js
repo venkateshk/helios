@@ -7,7 +7,8 @@ angular.module('heliosApp', [
     'ngRoute',
     'ui.bootstrap',
     'smart-table',
-    'daterangepicker'
+    'daterangepicker',
+    'angularjs-dropdown-multiselect'
 ])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider

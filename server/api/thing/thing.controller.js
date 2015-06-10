@@ -88,9 +88,7 @@ exports.index = function (req, res) {
     );
 
     ex.compute(context).then(function(data) {
-        // Log the data while converting it to a readable standard
         res.json(data.toJS());
-       // console.log(JSON.stringify(data.toJS(), null, 2));
     }).done();
 
 
